@@ -54,8 +54,8 @@ log_success "Dump completato: $BACKUP_FILE"
 rm -f dump_error.log
 
 log "Caricamento su S3 (${AWS_S3_URI})"
-if ! aws s3 cp "$BACKUP_FILE" "${AWS_S3_URI}/${BACKUP_FILE}" $AWS_OTHER_OPTIONS 2>aws_error.log; then
-  log_error "Errore durante upload su S3! Comando impartito: 'aws s3 cp "$BACKUP_FILE" "${AWS_S3_URI}/${BACKUP_FILE}" $AWS_OTHER_OPTIONS'  Dettagli:"
+if ! aws s3 cp "$BACKUP_FILE" "${AWS_S3_URI}/${BACKUP_FILE}" ${AWS_OTHER_OPTIONS:+$AWS_OTHER_OPTIONS} 2>aws_error.log; then
+  log_error "Errore durante upload su S3! Comando impartito: 'aws s3 cp "$BACKUP_FILE" "${AWS_S3_URI}/${BACKUP_FILE}" ${AWS_OTHER_OPTIONS:+$AWS_OTHER_OPTIONS}'  Dettagli:"
   cat aws_error.log | tee -a "$LOG_FILE" >&2
   rm -f aws_error.log
   exit 1

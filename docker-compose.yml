@@ -28,7 +28,7 @@ services:
       AWS_ACCESS_KEY_ID: s3-key-id
       AWS_SECRET_ACCESS_KEY: s3-key-secret
       AWS_DEFAULT_REGION: s3-region
-      AWS_OTHER_OPTIONS: option same: "--storage-class DEEP_ARCHIVE" (without "")
+      AWS_OTHER_OPTIONS: option same: "--storage-class DEEP_ARCHIVE and --progress-frequency 60" (without "")
     volumes:
-      - ./logs-backup:/var/log
+      - ./mysql-backup/logs:/var/log
 
