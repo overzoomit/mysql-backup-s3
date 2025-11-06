@@ -160,7 +160,7 @@ mongoBackup() {
   : "${AWS_S3_MONGO_BACKUP_URI:?Variabile AWS_S3_MONGO_BACKUP_URI mancante}"
 
 
-  AWS_S3_URI="$AWS_S3_PG_BACKUP_URI"
+  AWS_S3_URI="$AWS_S3_MONGO_BACKUP_URI"
   BACKUP_FILE="mongo_$(date +%Y%m%d-%H%M%S).gz"
 
   separator
