@@ -1,4 +1,3 @@
 .idea
 /logs
-/mysql-backup/logs
 docker-compose.yml.local
