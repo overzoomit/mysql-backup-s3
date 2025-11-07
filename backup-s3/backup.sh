@@ -75,7 +75,7 @@ mysqlBackup() {
 
 
   AWS_S3_URI="$AWS_S3_MYSQL_BACKUP_URI"
-  BACKUP_FILE="dump_$(date +%Y%m%d-%H%M%S).sql"
+  BACKUP_FILE="${MYSQL_DATABASE}_$(date +%Y%m%d-%H%M%S).sql"
 
   # Controlla che la variabile non sia vuota, se lo è imposta valore di default
     : "${MYSQL_PORT:=3306}"
@@ -119,7 +119,7 @@ postgresBackup() {
 
 
   AWS_S3_URI="$AWS_S3_PG_BACKUP_URI"
-  BACKUP_FILE="dump_$(date +%Y%m%d-%H%M%S).dump"
+  BACKUP_FILE="${PGDATABASE}_$(date +%Y%m%d-%H%M%S).dump"
 
   # Controlla che la variabile non sia vuota, se lo è imposta valore di default
   : "${PGPORT:=5432}"
@@ -161,7 +161,7 @@ mongoBackup() {
 
 
   AWS_S3_URI="$AWS_S3_MONGO_BACKUP_URI"
-  BACKUP_FILE="mongo_$(date +%Y%m%d-%H%M%S).gz"
+  BACKUP_FILE="${MONGO_DATABASE}_$(date +%Y%m%d-%H%M%S).gz"
 
   separator
 
